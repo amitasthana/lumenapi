@@ -77,15 +77,18 @@ class UrlsController extends Controller
         {
             $shortUrl = Urls::findByCode($code)[0];
 
-            $device = Urls::DetectDevice();
+            $device = Urls::DetectDeviceAndCount($shortUrl->id);
 
-            echo "<pre>"; print_r($shortUrl);
-            echo "<pre>"; print_r($device);
+            if ($device=='mobile') {
+              echo "<h1>mobile<pre>"; print_r( $shortUrl->mobile_url);
+            }else {
+                echo "<h1>desktop<pre>"; print_r( $shortUrl->desktop_url);
+            }
+
 
             die();
-
-
             return redirect($shortUrl->long_url);
+
         }
 
 
