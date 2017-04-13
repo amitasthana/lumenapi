@@ -26,7 +26,13 @@ class Urls extends Model
     public function getNewId()
     {
       $max = $this->whereRaw('id = (select max(`id`) from urls)')->get();
+
+      if(!count($max)){
+      return 1;
+      }else {
       return $max->first()->id+1;
+      }
+
     }
 
 

@@ -21,8 +21,8 @@ class UrlsNew extends Migration
           $table->string('short_url');
           $table->integer('mobile_clicks');
           $table->integer('desktop_clicks');
-          $table->string(updated_at);
-          $table->date(created_at);;
+          $table->string('updated_at');
+          $table->date('created_at');;
       });
     }
 
