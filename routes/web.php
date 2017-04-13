@@ -24,3 +24,13 @@ $app->group(['prefix' => 'book/'], function ($app) {
   $app->put('/{id}/','BooksController@update'); //update single route
   $app->delete('/{id}/','BooksController@destroy'); //delete single route
 });
+
+$app->group(['prefix' => 'url/'], function ($app) {
+    $app->get('/','UrlsController@index'); //get all the routes
+    $app->post('/','UrlsController@store'); //store single route
+    $app->get('/{id}/', 'UrlsController@show'); //get single route
+    $app->put('/{id}/','UrlsController@update'); //update single route
+    $app->delete('/{id}/','UrlsController@destroy'); //delete single route
+
+
+});
