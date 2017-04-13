@@ -55,7 +55,7 @@ class UrlsController extends Controller
         $url->desktop_url = $request->desktop_url;
         $short_url = $url->short_url = $url->getShortUrl();
         $url->save();
-        
+
         return response()->json(['success'=>true, 'url'=>$short_url]);
 
     }
@@ -75,7 +75,16 @@ class UrlsController extends Controller
 
       public function redirect($code)
         {
-            $shortUrl = ShortUrl::findByCode($code)[0];
+            $shortUrl = Urls::findByCode($code)[0];
+
+            $device = Urls::DetectDevice();
+
+            echo "<pre>"; print_r($shortUrl);
+            echo "<pre>"; print_r($device);
+
+            die();
+
+
             return redirect($shortUrl->long_url);
         }
 

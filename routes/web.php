@@ -31,6 +31,6 @@ $app->group(['prefix' => 'url/'], function ($app) {
     $app->get('/{id}/', 'UrlsController@show'); //get single route
     $app->put('/{id}/','UrlsController@update'); //update single route
     $app->delete('/{id}/','UrlsController@destroy'); //delete single route
-
-
 });
+
+$app->get('/{redirect}', 'UrlsController@redirect');

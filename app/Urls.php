@@ -20,7 +20,16 @@ class Urls extends Model
     public static function findByCode($code)
         {
             $id = unpack('i', base64_decode(str_pad(strtr($code, '-_', '+/'), strlen($code) % 4, '=')));
-            return ShortUrl::findOrFail($id);
+            return Urls::findOrFail($id);
+        }
+
+    public static function DetectDevice()
+        {
+
+            
+
+            $id = unpack('i', base64_decode(str_pad(strtr($code, '-_', '+/'), strlen($code) % 4, '=')));
+            return Urls::findOrFail($id);
         }
 
     public function getNewId()
