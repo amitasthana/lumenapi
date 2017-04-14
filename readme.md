@@ -78,8 +78,6 @@ The migration file will be created in database/migrations folder.
 You can use any editor to edit this file, I am doing in sever so it will be vi editor
 
 
-
-
 Open this file and add the table schema in it. Inside function up() add the following code: (a NewUrl Migration file is also kept for reference)
 Schema::create('urls', function (Blueprint $table) {
     $table->increments('id');
@@ -108,11 +106,14 @@ Create A New ShortUrl
 
 To create a new record for a Short urls using the API, we need to send a post request to localhost:8000/url/ with the following parameters
 
-
+mobile_url and desktop_url
 
 This is for creating the short url and saving the database.
 
-.
+Also if you don't have two urls but only one url, we need to send a post request to localhost:8000/url/any with the following parameters
+
+url : http://url.com
+
 
 Now you can go to any url with code
 
@@ -121,6 +122,9 @@ http://localhost:8000/AAAAAA
 It will redirect to you the links given the input
 
 
+Tests are written in the Test Folder. We can run it inside the lumen folder by running
+
+vendor/bin/phpunit
 
 
 Also for the convenience, I have installed it on my domain, asthana.me
@@ -129,8 +133,6 @@ In brief, you can create short URLs by posting the parameters mobile_url, deskto
 
 http://asthana.me/url
 
-
-Attaching a screenshot of the postman.
 
 Go To browser with the url you can so
 
