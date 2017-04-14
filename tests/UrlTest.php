@@ -30,6 +30,14 @@ class UrlTest extends TestCase
              ]);
     }
 
+    public function testPostingAnyUrl()
+    {
+        $this->json('POST', '/url/any', ['url' => 'https://evernote.com/Home.desktop'])
+             ->seeJson([
+                'success' => true,
+             ]);
+    }
+
 
     public function testGetUrl()
     {

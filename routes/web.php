@@ -20,9 +20,12 @@ $app->get('/', function () use ($app) {
 $app->group(['prefix' => 'url/'], function ($app) {
     $app->get('/','UrlsController@index'); //get all the routes
     $app->post('/','UrlsController@store'); //store single route
+    $app->post('/any/','UrlsController@anyurl'); //store single route
     $app->get('/{id}/', 'UrlsController@show'); //get single route
     $app->put('/{id}/','UrlsController@update'); //update single route
     $app->delete('/{id}/','UrlsController@destroy'); //delete single route
 });
+
+
 
 $app->get('/{redirect}', 'UrlsController@redirect');

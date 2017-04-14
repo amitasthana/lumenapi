@@ -46,8 +46,8 @@ class UrlsController extends Controller
     {
         //
         $this->validate($request, [
-        'mobile_url' => 'required',
-        'desktop_url' => 'required'
+        'mobile_url' => 'required|url',
+        'desktop_url' => 'required|url'
          ]);
 
         $url = new Urls();
@@ -60,16 +60,23 @@ class UrlsController extends Controller
 
     }
 
-    public function create(Request $request)
-        {
-            $this->validate($request, [
-                'url'=>'required|url',
-            ]);
-            $shortUrl = new ShortUrl();
-            $shortUrl->long_url = $request->get('url');
-            $shortUrl->save();
-            return response()->json(['success'=>true, 'url'=>$shortUrl->getShortUrl()]);
-        }
+    public function anyurl(Request $request)
+    {
+        //
+        $this->validate($request, [
+        'url' => 'required|url'
+         ]);
+
+        $url = new Urls();
+        $url->mobile_url = $request->url;
+        $url->desktop_url = $request->url;
+        $short_url = $url->short_url = $url->getShortUrl();
+        $url->save();
+
+        return response()->json(['success'=>true, 'url'=>$short_url]);
+
+    }
+
 
 
 
