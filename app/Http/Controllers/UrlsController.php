@@ -80,23 +80,12 @@ class UrlsController extends Controller
             $device = Urls::DetectDeviceAndCount($shortUrl->id);
 
             if ($device=='mobile') {
-              echo "<h1>mobile<pre>"; print_r( $shortUrl->mobile_url);
+                return redirect($shortUrl->mobile_url);
             }else {
-                echo "<h1>desktop<pre>"; print_r( $shortUrl->desktop_url);
+                  return redirect($shortUrl->desktop_url);
             }
 
-
-            die();
-            return redirect($shortUrl->long_url);
-
         }
-
-
-    public function generate_short_url()
-    {
-      return 'NXYz';
-    }
-
 
 
     /**

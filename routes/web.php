@@ -16,14 +16,6 @@ $app->get('/', function () use ($app) {
 });
 
 
-$app->group(['prefix' => 'book/'], function ($app) {
-
-  $app->get('/','BooksController@index'); //get all the routes
-  $app->post('/','BooksController@store'); //store single route
-  $app->get('/{id}/', 'BooksController@show'); //get single route
-  $app->put('/{id}/','BooksController@update'); //update single route
-  $app->delete('/{id}/','BooksController@destroy'); //delete single route
-});
 
 $app->group(['prefix' => 'url/'], function ($app) {
     $app->get('/','UrlsController@index'); //get all the routes
